@@ -1,0 +1,27 @@
+---
+# Shaarli - Docker Compose example configuration
+#
+# See:
+# - https://shaarli.readthedocs.io/en/master/Docker/#docker-compose
+#
+# Environment variables:
+# - SHAARLI_VIRTUAL_HOST      Fully Qualified Domain Name for the Shaarli instance
+# - SHAARLI_LETSENCRYPT_EMAIL Contact email for certificate renewal
+# - SHAARLI_DOCKER_TAG        Shaarli docker tag to use
+#                             See: https://hub.docker.com/r/shaarli/shaarli/tags
+version: '3'
+
+volumes:
+  shaarli-cache:
+  shaarli-data:
+
+services:
+  shaarli:
+    image: shaarli/shaarli:latest
+    build: ./
+    ports:
+      - 80:80
+    volumes:
+      - "shaarli-cache:/var/www/shaarli/cache"
+      - "shaarli-data:/var/www/shaarli/data"
+      - "./bulktagops:/var/www/shaarli/plugins/bulktagops"
