@@ -1,0 +1,15 @@
+{
+  "name": "bulktagops",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bulktagops.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify bulktagops.js | terser > ../bundle.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jws": "^4.0.0"
+  }
+}
