@@ -124,9 +124,11 @@ function hook_bulktagops_render_header($data)
  */
 function hook_bulktagops_render_footer($data)
 {
-    // List of plugin's JS files.
-    // Note that you just need to specify CSS path.
-    $data['js_files'][] = PluginManager::$PLUGINS_PATH . '/bulktagops/bundle.js';
+    if ($data['_PAGE_'] == TemplatePage::LINKLIST and $data['_LOGGEDIN_'] === true) {
+        // List of plugin's JS files.
+        // Note that you just need to specify CSS path.
+        $data['js_files'][] = PluginManager::$PLUGINS_PATH . '/bulktagops/bundle.js';
+    }
 
     return $data;
 }
