@@ -68,7 +68,11 @@ const updateBar = () => {
   });
 }
 
+// run it to initialize the bar in case of page reload
+updateBar();
+
 bar.addEventListener('keydown', (k) => {
+  // TODO handle enter and set entered/deleted tags
   if (event.key === "Enter") {
     event.preventDefault();
   }
