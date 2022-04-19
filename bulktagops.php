@@ -97,6 +97,10 @@ function hook_bulktagops_render_header($data, $conf)
                     'placeholder' => 'tags',
                     'class' => 'bulktaginput',
                     'key' => $conf->get('plugins.BULKTAGOPS_REST_API_KEY'),
+                    'autocomplete' => 'off',
+                    'data-multiple' => '',
+                    'data-minChars' => '1',
+                    'data-list' => '',
                 ]
             ]
         ];

@@ -4,11 +4,8 @@
 
 const Jws = require('jws')
 
-var currCommonTags = [];
 const linkCheckboxes = document.querySelectorAll('.link-checkbox');
 [...linkCheckboxes].forEach(async (checkbox) => {
-  checkbox.style.display = 'inline-block';
-
   // multiple event listeners can be defined
   checkbox.addEventListener('change', () => {
     const linkCheckedCheckboxes = document.querySelectorAll('.link-checkbox:checked');
@@ -68,6 +65,10 @@ const updateBar = () => {
 
 // run it to initialize the bar in case of page reload
 updateBar();
+
+// snatch tags from the search bar
+const searchTags = document.querySelector('.searchtags');
+bar.setAttribute('data-list', searchTags.getAttribute('data-list'));
 
 bar.addEventListener('keydown', (k) => {
   // TODO handle enter and set entered/deleted tags
