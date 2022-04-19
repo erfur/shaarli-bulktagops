@@ -58,7 +58,7 @@ function bulktagops_init($conf)
  *
  * @return array altered $data.
  */
-function hook_bulktagops_render_header($data)
+function hook_bulktagops_render_header($data, $conf)
 {
     // Only execute when linklist is rendered and logged in.
     if ($data['_PAGE_'] == TemplatePage::LINKLIST and $data['_LOGGEDIN_'] === true) {
@@ -95,7 +95,8 @@ function hook_bulktagops_render_header($data)
                     'type' => 'text',
                     'name' => 'tags',
                     'placeholder' => 'tags',
-                    'class' => 'bulktaginput'
+                    'class' => 'bulktaginput',
+                    'key' => $conf->get('plugins.BULKTAGOPS_REST_API_KEY'),
                 ]
             ]
         ];

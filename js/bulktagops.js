@@ -35,13 +35,11 @@ const updateBar = () => {
           alg: 'HS512',
           typ: 'JWT' },
         payload: { iat: Math.floor(Date.now() / 1000) },
-        // TODO get this value from backend somehow
-        secret: "f150c910edb3"
+        secret: bar.getAttribute('key')
       }
     );
     // retreive each link's tags using REST API
-    // TODO get the base path from backend
-    fetch('http://localhost/api/v1/links/' + link.value.toString(),
+    fetch(window.location.origin + '/api/v1/links/' + link.value.toString(),
       {
         headers: {
           'Authorization': 'Bearer ' + token.toString(),
@@ -51,7 +49,7 @@ const updateBar = () => {
     // TODO study async, see if this usage is correct
     .then(async (response) => {
       linkJson = await response.json(); //extract JSON from the http response
-      console.log(linkJson);
+      // console.log(linkJson);
 
       if (first) {
         tags = new Set(linkJson.tags);
