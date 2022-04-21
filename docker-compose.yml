@@ -1,0 +1,18 @@
+---
+# Test the plugin with a Shaarli instance
+
+version: '3'
+
+volumes:
+  shaarli-cache:
+  shaarli-data:
+
+services:
+  shaarli:
+    image: shaarli/shaarli:latest
+    ports:
+      - 80:80
+    volumes:
+      - "shaarli-cache:/var/www/shaarli/cache"
+      - "shaarli-data:/var/www/shaarli/data"
+      - "./:/var/www/shaarli/plugins/bulktagops"

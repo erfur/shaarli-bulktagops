@@ -1,20 +1,5 @@
 <?php
 
-/**
- * Demo Plugin.
- *
- * This plugin tries to completely cover Shaarli's plugin API.
- * Can be used by plugin developers to make their own plugin.
- */
-
-/*
- * RENDER HEADER, INCLUDES, FOOTER
- *
- * Those hooks are called at every page rendering.
- * You can filter its execution by checking _PAGE_ value
- * and check user status with _LOGGEDIN_.
- */
-
 use Shaarli\Bookmark\Bookmark;
 use Shaarli\Config\ConfigManager;
 use Shaarli\Plugin\PluginManager;
@@ -62,28 +47,7 @@ function hook_bulktagops_render_header($data, $conf)
 {
     // Only execute when linklist is rendered and logged in.
     if ($data['_PAGE_'] == TemplatePage::LINKLIST and $data['_LOGGEDIN_'] === true) {
-        /*
-         * Add additional input fields in the tools.
-         * A field is an array containing:
-         *  [
-         *      'form-attribute-1' => 'form attribute 1 value',
-         *      'form-attribute-2' => 'form attribute 2 value',
-         *      'inputs' => [
-         *          [
-         *              'input-1-attribute-1 => 'input 1 attribute 1 value',
-         *              'input-1-attribute-2 => 'input 1 attribute 2 value',
-         *          ],
-         *          [
-         *              'input-2-attribute-1 => 'input 2 attribute 1 value',
-         *          ],
-         *      ],
-         *  ]
-         * This example renders as:
-         * <form form-attribute-1="form attribute 1 value" form-attribute-2="form attribute 2 value">
-         *   <input input-1-attribute-1="input 1 attribute 1 value" input-1-attribute-2="input 1 attribute 2 value">
-         *   <input input-2-attribute-1="input 2 attribute 1 value">
-         * </form>
-         */
+
         $form = [
             'attr' => [
                 'method' => 'GET',
@@ -131,7 +95,6 @@ function hook_bulktagops_render_footer($data)
 {
     if ($data['_PAGE_'] == TemplatePage::LINKLIST and $data['_LOGGEDIN_'] === true) {
         // List of plugin's JS files.
-        // Note that you just need to specify CSS path.
         $data['js_files'][] = PluginManager::$PLUGINS_PATH . '/bulktagops/bundle.js';
     }
 
